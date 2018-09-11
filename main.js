@@ -10,6 +10,23 @@ const events = {
 	MESSAGE_REACTION_REMOVE: 'messageReactionRemove',
 };
   
+function Command(message, args, command) {
+    if(!fs.existsSync(`./commands/${command}.js`)) {
+        let embed = utils.embeds.build("Command not found", `You requested the command \`${command}\`, which doesn't exist.`)
+        message.channel.send({embed}).then(a => {setTimeout(() => {a.delete()}, _delay); }).catch(e => { log.error(e);})
+        return;
+    }
+    
+    try {
+        let commandFile = require(`./commands/${command}.js`);
+        utils.log.log(message.author.username + " ran command '" + message + "'")
+        message.delete();
+        commandFile.run(client, message, args);
+    } catch (err) {
+        utils.log.error(err.stack);
+    }
+}
+
 client.on('raw', async event => {
 	// `event.t` is the raw event name
 	if (!events.hasOwnProperty(event.t)) return;
@@ -46,10 +63,21 @@ client.on("messageReactionAdd", (reaction, user) => {
 });
 
 client.on("ready", () => {
-    utils.log.log(config.ServerIDs.ServerID)
-    utils.log.log(config.ServerIDs.RetrieveID)
     utils.log.log("Started!")
     let embed = utils.embeds.build("I'm awake!", `I have started! Here's my logistics\n\`\`\`diff\nVERSION\n- ${config.version}\nDISCORD API\n- Discord.js ${Discord.version}\nGUILDS AND USERS\n- In ${client.guilds.size} guild${client.guilds.size > 1 ? "s" : ""}\n- Watching ${client.users.size} users\nDEVELOPER\n+ Fubbo (AXIUS)\n\`\`\``)
+    client.guilds.get("485972909567901706").channels.get(config.LogsChannel).send({embed});
+});
+
+client.on("message", (message) => {
+    if (!message.guild) return;
+    
+    //if(message.channel.id == "482228566352855081" && message.content.indexOf(config.prefix + "%")) {
+    if (message.author.bot) return;
+    if (message.content.indexOf(config.prefix) !== 0) return;
+
+    const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
+    const command = args[0].toLowerCase();
+    Command(message, args, command)
 });
 
 client.login(config.token);

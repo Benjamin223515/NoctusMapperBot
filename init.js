@@ -51,11 +51,18 @@ function run() {
     section = 0;
 
     //config
-    var conf = '{\n"token":"CHANGEME",\n"ServerIDs":[\n{"ServerID":"485972909567901706"},\n{"RetrieveID":"208947453024534528"}\n]\n,"prefix":"."\n}'
-    console.log("[INIT] Defined config defaults")
-    fs.appendFileSync("config.json", conf, err => {
-        if(err) log.error(err.toString());
-    } );
+    if(fs.existsSync("./config.json")) {
+        console.log("[INIT] Config file already exists.. ignoring.")
+    }
+    else
+    {
+        var conf = '{\n"token":"NDg5MTU4OTY1NjcwOTY5MzQ0.DnmtRA.NFbbk3xtyaIA7qo1qgsQerV1MQQ",\n"ServerIDs":[\n{"ServerID":"485972909567901706"},\n{"RetrieveID":"208947453024534528"}\n],\n"prefix":".",\n"LogsChannel":"486016170235789312"\n}'
+        console.log("[INIT] Defined config defaults")
+        fs.appendFileSync("config.json", conf, err => {
+            if(err) log.error(err.toString());
+        } );
+    }
+    
 
     console.log("[CONT] Edit the config values. Type \"DONE\" when completed.")
     section = 2
@@ -80,6 +87,23 @@ function files() {
         console.log("[INIT] Folder doesn't exist. Created configs folder.")
     }
     else console.log("[INIT] Folder exists. Ignoring.")
+
+    //Logs folder
+    console.log("[INIT] Checking if Logs folder exists..")
+    if(!fs.existsSync("./Logs")) {
+        fs.mkdir("./Logs", e => {if(e) console.log(e)})
+        console.log("[INIT] Folder doesn't exist. Created logs folder.")
+    }
+    else console.log("[INIT] Folder exists. Ignoring.")
+
+    //Errors folder
+    console.log("[INIT] Checking if Errors folder exists..")
+    if(!fs.existsSync("./Errors")) {
+        fs.mkdir("./Errors", e => {if(e) console.log(e)})
+        console.log("[INIT] Folder doesn't exist. Created errors folder.")
+    }
+    else console.log("[INIT] Folder exists. Ignoring.")
+
     section = 3
     console.log("+----------[ INITIALIZATION COMPLETE ]----------+")
     console.log("|                                               |")
