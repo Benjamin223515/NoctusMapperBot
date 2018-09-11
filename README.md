@@ -3,7 +3,7 @@
 ## Prerequisites
 The following are required in order to run the Initialize file and the bot itself -
 - Node.JS v8.11.4 ([DOWNLOAD](https://nodejs.org/en/download/) | [CENTOS](https://nodejs.org/en/download/package-manager/#enterprise-linux-and-fedora) | [UBUNTU](https://nodejs.org/en/download/package-manager/#enterprise-linux-and-fedora))
-- Discord.js v11.4.2 ([INSTALLATION GUIDE](https://discord.js.org/#/docs/main/stable/general/welcome)(SEE INSTALLATION))
+- Discord.js v11.4.2 ([INSTALLATION GUIDE](https://discord.js.org/#/docs/main/stable/general/welcome) (SEE INSTALLATION))
 - Stable internet connection
 
 ## Installation
