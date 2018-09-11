@@ -104,6 +104,14 @@ function files() {
     }
     else console.log("[INIT] Folder exists. Ignoring.")
 
+    //Commands folder
+    console.log("[INIT] Checking if Commands folder exists..")
+    if(!fs.existsSync("./Commands")) {
+        fs.mkdir("./Commands", e => {if(e) console.log(e)})
+        console.log("[INIT] Folder doesn't exist. Created commands folder.")
+    }
+    else console.log("[INIT] Folder exists. Ignoring.")
+
     section = 3
     console.log("+----------[ INITIALIZATION COMPLETE ]----------+")
     console.log("|                                               |")

@@ -1,0 +1,11 @@
+[ERROR](11/09/2018 22:14:30) ReferenceError: config is not defined
+    at Help (C:\Users\User\Documents\GitHub\NoctusMapperBot\commands\settings.js:10:30)
+    at Object.exports.run (C:\Users\User\Documents\GitHub\NoctusMapperBot\commands\settings.js:15:18)
+    at Command (C:\Users\User\Documents\GitHub\NoctusMapperBot\main.js:24:21)
+    at Client.client.on (C:\Users\User\Documents\GitHub\NoctusMapperBot\main.js:79:5)
+    at emitOne (events.js:116:13)
+    at Client.emit (events.js:211:7)
+    at MessageCreateHandler.handle (C:\Users\User\Documents\GitHub\NoctusMapperBot\node_modules\discord.js\src\client\websocket\packets\handlers\MessageCreate.js:9:34)
+    at WebSocketPacketManager.handle (C:\Users\User\Documents\GitHub\NoctusMapperBot\node_modules\discord.js\src\client\websocket\packets\WebSocketPacketManager.js:103:65)
+    at WebSocketConnection.onPacket (C:\Users\User\Documents\GitHub\NoctusMapperBot\node_modules\discord.js\src\client\websocket\WebSocketConnection.js:333:35)
+    at WebSocketConnection.onMessage (C:\Users\User\Documents\GitHub\NoctusMapperBot\node_modules\discord.js\src\client\websocket\WebSocketConnection.js:296:17)

@@ -5,3 +5,53 @@
 [LOG](11/09/2018 21:17:20) Started!
 [LOG](11/09/2018 21:17:46) Started!
 [LOG](11/09/2018 21:18:03) Started!
+[LOG](11/09/2018 22:12:09) Started!
+[LOG](11/09/2018 22:12:29) Fubbo ran command '.settings'
+[LOG](11/09/2018 22:14:15) Fubbo ran command '.reload settings'
+[LOG](11/09/2018 22:14:30) Fubbo ran command '.settings'
+[ERROR](11/09/2018 22:14:30) ReferenceError: config is not defined
+    at Help (C:\Users\User\Documents\GitHub\NoctusMapperBot\commands\settings.js:10:30)
+    at Object.exports.run (C:\Users\User\Documents\GitHub\NoctusMapperBot\commands\settings.js:15:18)
+    at Command (C:\Users\User\Documents\GitHub\NoctusMapperBot\main.js:24:21)
+    at Client.client.on (C:\Users\User\Documents\GitHub\NoctusMapperBot\main.js:79:5)
+    at emitOne (events.js:116:13)
+    at Client.emit (events.js:211:7)
+    at MessageCreateHandler.handle (C:\Users\User\Documents\GitHub\NoctusMapperBot\node_modules\discord.js\src\client\websocket\packets\handlers\MessageCreate.js:9:34)
+    at WebSocketPacketManager.handle (C:\Users\User\Documents\GitHub\NoctusMapperBot\node_modules\discord.js\src\client\websocket\packets\WebSocketPacketManager.js:103:65)
+    at WebSocketConnection.onPacket (C:\Users\User\Documents\GitHub\NoctusMapperBot\node_modules\discord.js\src\client\websocket\WebSocketConnection.js:333:35)
+    at WebSocketConnection.onMessage (C:\Users\User\Documents\GitHub\NoctusMapperBot\node_modules\discord.js\src\client\websocket\WebSocketConnection.js:296:17)
+[LOG](11/09/2018 22:14:49) Fubbo ran command '.reload settings'
+[ERROR](11/09/2018 22:14:51) Error: Cannot find module './config.json'
+    at Function.Module._resolveFilename (module.js:547:15)
+    at Function.Module._load (module.js:474:25)
+    at Module.require (module.js:596:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (C:\Users\User\Documents\GitHub\NoctusMapperBot\commands\settings.js:5:16)
+    at Module._compile (module.js:652:30)
+    at Object.Module._extensions..js (module.js:663:10)
+    at Module.load (module.js:565:32)
+    at tryModuleLoad (module.js:505:12)
+    at Function.Module._load (module.js:497:3)
+[LOG](11/09/2018 22:15:07) Fubbo ran command '.reload settings'
+[LOG](11/09/2018 22:15:09) Fubbo ran command '.settings'
+[ERROR](11/09/2018 22:15:09) ReferenceError: message is not defined
+    at Help (C:\Users\User\Documents\GitHub\NoctusMapperBot\commands\settings.js:12:5)
+    at Object.exports.run (C:\Users\User\Documents\GitHub\NoctusMapperBot\commands\settings.js:16:18)
+    at Command (C:\Users\User\Documents\GitHub\NoctusMapperBot\main.js:24:21)
+    at Client.client.on (C:\Users\User\Documents\GitHub\NoctusMapperBot\main.js:79:5)
+    at emitOne (events.js:116:13)
+    at Client.emit (events.js:211:7)
+    at MessageCreateHandler.handle (C:\Users\User\Documents\GitHub\NoctusMapperBot\node_modules\discord.js\src\client\websocket\packets\handlers\MessageCreate.js:9:34)
+    at WebSocketPacketManager.handle (C:\Users\User\Documents\GitHub\NoctusMapperBot\node_modules\discord.js\src\client\websocket\packets\WebSocketPacketManager.js:103:65)
+    at WebSocketConnection.onPacket (C:\Users\User\Documents\GitHub\NoctusMapperBot\node_modules\discord.js\src\client\websocket\WebSocketConnection.js:333:35)
+    at WebSocketConnection.onMessage (C:\Users\User\Documents\GitHub\NoctusMapperBot\node_modules\discord.js\src\client\websocket\WebSocketConnection.js:296:17)
+[LOG](11/09/2018 22:15:24) Fubbo ran command '.reload settings'
+[LOG](11/09/2018 22:15:26) Fubbo ran command '.settings'
+[LOG](11/09/2018 22:15:31) Fubbo ran command '.settings prefix'
+[LOG](11/09/2018 22:19:27) Fubbo ran command '.settings prefix !'
+[LOG](11/09/2018 22:19:39) Fubbo ran command '!settings'
+[LOG](11/09/2018 22:23:36) Fubbo ran command '!reload settings'
+[LOG](11/09/2018 22:23:40) Fubbo ran command '!settings'
+[LOG](11/09/2018 22:23:49) Fubbo ran command '!settings logs 489156205714079744'
+[LOG](11/09/2018 22:23:59) Started!
+[LOG](11/09/2018 22:24:41) Started!

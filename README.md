@@ -18,7 +18,7 @@ The following are required in order to run the Initialize file and the bot itsel
 ## Bot Checklist
 - [x] Initialization file
 - [x] Utilities
-- [ ] Launch setup
+- [x] Settings
 - [ ] Verification
 - [ ] Rank Requests
 - [ ] Suggestion Requests

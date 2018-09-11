@@ -5,6 +5,8 @@ const fs = require("fs");
 const _delay = 10000;
 const utils = require("./utilities/utilsmain.js")
 
+const v = "0.1-beta"
+
 const events = {
 	MESSAGE_REACTION_ADD: 'messageReactionAdd',
 	MESSAGE_REACTION_REMOVE: 'messageReactionRemove',
@@ -64,13 +66,12 @@ client.on("messageReactionAdd", (reaction, user) => {
 
 client.on("ready", () => {
     utils.log.log("Started!")
-    let embed = utils.embeds.build("I'm awake!", `I have started! Here's my logistics\n\`\`\`diff\nVERSION\n- ${config.version}\nDISCORD API\n- Discord.js ${Discord.version}\nGUILDS AND USERS\n- In ${client.guilds.size} guild${client.guilds.size > 1 ? "s" : ""}\n- Watching ${client.users.size} users\nDEVELOPER\n+ Fubbo (AXIUS)\n\`\`\``)
+    let embed = utils.embeds.build("I'm awake!", `I have started! Here's my logistics\n\`\`\`diff\nVERSION\n- ${v}\nDISCORD API\n- Discord.js ${Discord.version}\nGUILDS AND USERS\n- In ${client.guilds.size} guild${client.guilds.size > 1 ? "s" : ""}\n- Watching ${client.users.size} users\nDEVELOPER\n+ Fubbo (AXIUS)\n\`\`\``)
     client.guilds.get("485972909567901706").channels.get(config.LogsChannel).send({embed});
 });
 
 client.on("message", (message) => {
     if (!message.guild) return;
-    
     //if(message.channel.id == "482228566352855081" && message.content.indexOf(config.prefix + "%")) {
     if (message.author.bot) return;
     if (message.content.indexOf(config.prefix) !== 0) return;
