@@ -1,5 +1,11 @@
 # NOCTUS MAPPERS DISCORD BOT
 
+## Prerequisites
+The following are required in order to run the Initialize file and the bot itself -
+- Node.JS v8.11.4 ([DOWNLOAD](https://nodejs.org/en/download/) | [CENTOS](https://nodejs.org/en/download/package-manager/#enterprise-linux-and-fedora) | [UBUNTU](https://nodejs.org/en/download/package-manager/#enterprise-linux-and-fedora))
+- Discord.js v11.4.2 ([INSTALLATION GUIDE](https://discord.js.org/#/docs/main/stable/general/welcome)(SEE INSTALLATION))
+- Stable internet connection
+
 ## Installation
 1. Invite the bot to the Server (Noctus Mappers) and the retrieve server (Noctus).
 2. Run the "initialize.js" file to create the data files and the editable configuration file.
@@ -11,7 +17,8 @@
 
 ## Bot Checklist
 - [x] Initialization file
-- [ ] Utilities
+- [x] Utilities
+- [ ] Launch setup
 - [ ] Verification
 - [ ] Rank Requests
 - [ ] Suggestion Requests
