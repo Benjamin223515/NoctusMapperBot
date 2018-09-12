@@ -2,11 +2,11 @@ const log = require(__dirname + "/../utilities/console.js")
 const fs = require("fs");
 const Discord = require("discord.js");
 const embeds = require(__dirname + "/../utilities/embeds.js")
-const config = require(__dirname + "/../config.json");
 
 const _delay = 10000;
 
-function Help(message) {
+function Help(message, id) {
+    const config = require(__dirname + "/../Configs/" + id + ".json");
     let embed = embeds.build("Server Settings", "")
     .addField("Prefix", `\`${config.prefix}\``, true)
     .addField("Logs Channel", `<#${config.LogsChannel}>`)
@@ -14,12 +14,14 @@ function Help(message) {
 }
 
 exports.run = (client, message, args) => {
-    if(!args[1]) Help(message);
+    let id = message.guild.id;
+    const config = require(__dirname + "/../Configs/" + id + ".json");
+    if(!args[1]) Help(message, id);
     else {
         if(message.member.hasPermission("ADMINISTRATOR")) {
             switch(args[1].toLowerCase()) {
             default:
-                return Help();
+                return Help(message, id);
 
             case "prefix":
             if(!args[2]) {

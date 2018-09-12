@@ -25,7 +25,7 @@ function Command(message, args, command) {
         message.delete();
         commandFile.run(client, message, args);
     } catch (err) {
-        utils.log.error(err.stack);
+        console.log(err)
     }
 }
 
@@ -66,17 +66,28 @@ client.on("messageReactionAdd", (reaction, user) => {
 
 client.on("ready", () => {
     utils.log.log("Started!")
+    client.guilds.forEach(id => {
+        if(fs.existsSync("./Configs/" + id.id + ".json")) return;
+        else {
+            var conf = '{\n"prefix":".",\n"LogsChannel":"486016170235789312",\n"RankSub":"null",\n"SugSub":"null",\n"RankRev":"null",\n"SugRev":"null"\n}'
+            utils.file.startup_file("./Configs/" + id.id + ".json", conf);
+        }
+    })
     let embed = utils.embeds.build("I'm awake!", `I have started! Here's my logistics\n\`\`\`diff\nVERSION\n- ${v}\nDISCORD API\n- Discord.js ${Discord.version}\nGUILDS AND USERS\n- In ${client.guilds.size} guild${client.guilds.size > 1 ? "s" : ""}\n- Watching ${client.users.size} users\nDEVELOPER\n+ Fubbo (AXIUS)\n\`\`\``)
-    client.guilds.get("485972909567901706").channels.get(config.LogsChannel).send({embed});
+    client.guilds.forEach(a => {
+        let co = require('./Configs/' + a.id + ".json")
+        a.channels.get(co.LogsChannel).send({embed});
+    })
 });
 
 client.on("message", (message) => {
+    let conf = require("./Configs/" + message.guild.id + ".json")
     if (!message.guild) return;
     //if(message.channel.id == "482228566352855081" && message.content.indexOf(config.prefix + "%")) {
     if (message.author.bot) return;
-    if (message.content.indexOf(config.prefix) !== 0) return;
+    if (message.content.indexOf(conf.prefix) !== 0) return;
 
-    const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
+    const args = message.content.slice(conf.prefix.length).trim().split(/ +/g);
     const command = args[0].toLowerCase();
     Command(message, args, command)
 });

@@ -56,7 +56,7 @@ function run() {
     }
     else
     {
-        var conf = '{\n"token":"NDg5MTU4OTY1NjcwOTY5MzQ0.DnmtRA.NFbbk3xtyaIA7qo1qgsQerV1MQQ",\n"ServerIDs":[\n{"ServerID":"485972909567901706"},\n{"RetrieveID":"208947453024534528"}\n],\n"prefix":".",\n"LogsChannel":"486016170235789312"\n}'
+        var conf = '{\n"token":"NDg5MTU4OTY1NjcwOTY5MzQ0.DnmtRA.NFbbk3xtyaIA7qo1qgsQerV1MQQ",\n"ServerID":"485972909567901706"\n}'
         console.log("[INIT] Defined config defaults")
         fs.appendFileSync("config.json", conf, err => {
             if(err) log.error(err.toString());

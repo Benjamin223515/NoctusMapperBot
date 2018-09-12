@@ -1,0 +1,12 @@
+[LOG](12/09/2018 16:54:06) Started!
+[LOG](12/09/2018 16:54:55) Started!
+[LOG](12/09/2018 16:56:23) Started!
+[LOG](12/09/2018 16:58:36) Started!
+[LOG](12/09/2018 17:00:41) Started!
+[LOG](12/09/2018 17:01:16) Started!
+[LOG](12/09/2018 17:02:29) Started!
+[LOG](12/09/2018 17:03:44) Fubbo ran command '.reload settings'
+[LOG](12/09/2018 17:03:47) Fubbo ran command '.settings'
+[LOG](12/09/2018 17:04:10) Fubbo ran command '.reload settinga'
+[LOG](12/09/2018 17:04:13) Fubbo ran command '.reload settings'
+[LOG](12/09/2018 17:04:15) Fubbo ran command '.settings'
