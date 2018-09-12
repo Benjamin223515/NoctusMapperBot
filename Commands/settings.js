@@ -10,6 +10,7 @@ function Help(message, id) {
     let embed = embeds.build("Server Settings", "")
     .addField("Prefix", `\`${config.prefix}\``, true)
     .addField("Logs Channel", `<#${config.LogsChannel}>`)
+    .addField("Mute Role", (config.MuteRole == "null" ? config.MuteRole : `<@&${config.MuteRole}>`))
     return message.channel.send({embed}).then(a => {setTimeout(() => {a.delete()}, _delay)}).catch(b => {log.error(b)})
 }
 
@@ -38,7 +39,15 @@ exports.run = (client, message, args) => {
             config.LogsChannel = args[2];
             fs.writeFile(__dirname + "/../config.json", JSON.stringify(config), (err) => {});
             return message.channel.send(embeds.success("Successfully changed the log channel to to <#" + args[2] + ">.")).then(a => {setTimeout(() => {a.delete()}, _delay)}).catch(b => {log.error(b)})
+            
+            case "mute":
+            if(!args[2]||isNaN(args[2])) {
+                return message.channel.send(embeds.error("Invalid Syntax\n`" + config.prefix + "settings mute <roleID>`")).then(a => {setTimeout(() => {a.delete()}, _delay)}).catch(b => {log.error(b)})
             }
+            config.MuteRole = args[2];
+            fs.writeFile(__dirname + "/../config.json", JSON.stringify(config), (err) => {});
+            return message.channel.send(embeds.success("Successfully changed the mute role to <@&" + args[2] + ">.")).then(a => {setTimeout(() => {a.delete()}, _delay)}).catch(b => {log.error(b)})
+        }
         
         }
         else {

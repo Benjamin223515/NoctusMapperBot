@@ -10,3 +10,33 @@
 [LOG](12/09/2018 17:04:10) Fubbo ran command '.reload settinga'
 [LOG](12/09/2018 17:04:13) Fubbo ran command '.reload settings'
 [LOG](12/09/2018 17:04:15) Fubbo ran command '.settings'
+[LOG](12/09/2018 17:26:18) Started!
+[LOG](12/09/2018 17:27:25) Fubbo ran command '.settings'
+[LOG](12/09/2018 17:27:25) Fubbo ran command '.settings'
+[LOG](12/09/2018 17:27:40) Fubbo ran command '.reload settings'
+[LOG](12/09/2018 17:27:40) Fubbo ran command '.reload settings'
+[LOG](12/09/2018 17:27:42) Fubbo ran command '.settings'
+[LOG](12/09/2018 17:27:42) Fubbo ran command '.settings'
+[LOG](12/09/2018 17:31:38) Started!
+[LOG](12/09/2018 17:53:19) Fubbo ran command '.reload settings'
+[LOG](12/09/2018 17:53:19) Fubbo ran command '.reload settings'
+[LOG](12/09/2018 17:53:21) Fubbo ran command '.settings'
+[LOG](12/09/2018 17:53:21) Fubbo ran command '.settings'
+[LOG](12/09/2018 17:54:03) Started!
+[LOG](12/09/2018 17:54:43) Started!
+[LOG](12/09/2018 17:55:15) Started!
+[LOG](12/09/2018 17:55:29) Fubbo ran command '.settings'
+[LOG](12/09/2018 17:55:29) Fubbo ran command '.settings'
+[LOG](12/09/2018 17:55:29) Fubbo ran command '.settings'
+[LOG](12/09/2018 17:55:41) Fubbo ran command '.settings'
+[LOG](12/09/2018 17:55:41) Fubbo ran command '.settings'
+[LOG](12/09/2018 17:55:41) Fubbo ran command '.settings'
+[LOG](12/09/2018 17:56:42) Started!
+[LOG](12/09/2018 17:56:46) Fubbo ran command '.settings'
+[LOG](12/09/2018 17:56:49) Fubbo ran command '.settings logs'
+[LOG](12/09/2018 17:56:59) Fubbo ran command '.settings logs 486016170235789312'
+[LOG](12/09/2018 18:01:27) Fubbo ran command '.roleid <@&485975766685843457>'
+[LOG](12/09/2018 18:02:39) Fubbo ran command '.reload settings'
+[LOG](12/09/2018 18:02:43) Fubbo ran command '.settings'
+[LOG](12/09/2018 18:02:50) Fubbo ran command '.settings mute 485975766685843457'
+[LOG](12/09/2018 18:03:02) Fubbo ran command '.settings'

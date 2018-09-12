@@ -65,15 +65,20 @@ client.on("messageReactionAdd", (reaction, user) => {
 });
 
 client.on("ready", () => {
+    client.user.setActivity("")
     utils.log.log("Started!")
     client.guilds.forEach(id => {
         if(fs.existsSync("./Configs/" + id.id + ".json")) return;
         else {
-            var conf = '{\n"prefix":".",\n"LogsChannel":"486016170235789312",\n"RankSub":"null",\n"SugSub":"null",\n"RankRev":"null",\n"SugRev":"null"\n}'
+            var conf = '{\n"prefix":".",\n"LogsChannel":"' + id.channels.first().id + '",\n"RankSub":"null",\n"SugSub":"null",\n"RankRev":"null",\n"SugRev":"null",\n"MuteRole":"null"\n}'
             utils.file.startup_file("./Configs/" + id.id + ".json", conf);
         }
     })
-    let embed = utils.embeds.build("I'm awake!", `I have started! Here's my logistics\n\`\`\`diff\nVERSION\n- ${v}\nDISCORD API\n- Discord.js ${Discord.version}\nGUILDS AND USERS\n- In ${client.guilds.size} guild${client.guilds.size > 1 ? "s" : ""}\n- Watching ${client.users.size} users\nDEVELOPER\n+ Fubbo (AXIUS)\n\`\`\``)
+    let users = client.users.size;
+    client.users.forEach(a => {
+        if(a.bot) users = users - 1;
+    })
+    let embed = utils.embeds.build("I'm awake!", `I have started! Here's my logistics\n\`\`\`diff\nVERSION\n- ${v}\nDISCORD API\n- Discord.js ${Discord.version}\nGUILDS AND USERS\n- In ${client.guilds.size} guild${client.guilds.size > 1 ? "s" : ""}\n- Watching ${users} users\nDEVELOPER\n+ Fubbo (AXIUS)\n\`\`\``)
     client.guilds.forEach(a => {
         let co = require('./Configs/' + a.id + ".json")
         a.channels.get(co.LogsChannel).send({embed});
