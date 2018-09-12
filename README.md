@@ -19,11 +19,11 @@ The following are required in order to run the Initialize file and the bot itsel
 - [x] Initialization file
 - [x] Utilities
 - [x] Settings
-- [ ] Verification
 - [ ] Rank Requests
 - [ ] Suggestion Requests
 - [ ] Muting
 - [ ] Ticket System
+- [ ] \(OPTIONAL) Verification
 - [ ] \(OPTIONAL) Coin System
 - [ ] \(OPTIONAL) Coin Store
 - [ ] \(OPTIONAL) Noctus Discord <-> NMDiscord Link
