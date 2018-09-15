@@ -53,14 +53,13 @@ client.on('raw', async event => {
 
 client.on("messageReactionAdd", (reaction, user) => {
     if(user.bot) return;
-    client.guilds.get(config.ServerIDs[ServerID]).channels.get("482230604419563567").fetchMessages({limit: 1}).then(a => {
-        if(reaction.message.id == a.first().id) {
+    let config = require("./config.json")
+    let conf = require("./Configs/" + reaction.message.guild.id + ".json")
+    //suggestions
+    client.guilds.get(config.ServerID).channels.get(conf.SugRev).fetchMessages().then(a => {
             if(reaction.emoji.name == "✅") {
                 reaction.remove(user);
-                reaction.message.guild.members.get(user.id).addRole("482230687299010563").then(() => {}).catch(e => {console.log(e)})
-                utils.console.log(`${user.tag} verified themselves.`)
             }
-        }
     })
 });
 
@@ -83,39 +82,43 @@ client.on("ready", () => {
         a.channels.get(co.LogsChannel).send({embed});
     })
 });
+
 client.on("message", (message) => {
-    let conf = require("./Configs/" + message.guild.id + ".json")
+    let id = message.guild.id;
+    let config = require("./Configs/" + id + ".json")
+    let conf = config;
     if (!message.guild) return;
     if (message.author.bot) return;
 
     //suggestions
-    if(message.channel.id == config.SugSub) {
+    if(message.channel.id === config.SugSub) {
         try {
-            message.delete()
-            message.guild.channels.get(config.SugRev).send(utils.embeds.build(`${message.author.tag}'s Suggestion`, message.content).then(a=>{
+            message.guild.channels.get(config.SugRev).send(utils.embeds.build(`${message.author.tag}'s Suggestion`, message.content)).then(a=>{
                 a.react("✅")
                 a.react("❎")
-            }))
+            })
+            message.delete()
         }
         catch (e)
         {
+            console.error(e);
             message.author.send(utils.embeds.error("An error occured.\n\n```" + e.stack + "```"))
         }
     }
     else
     //ranks
-    if(message.channel.id == config.RankSub) {
+    if(message.channel.id === config.RankSub) {
         if(message.mentions.roles.size < 1||args.length > 1) {
             message.author.send(utils.embeds.error("You need to mention a role you wish to request!"))
         }
         else
         {
             try {
-                message.delete()
-                message.guild.channels.get(config.RankRev).send(utils.embeds.build(`${message.author.tag}'s Rank Request`, "<@&" + message.mentions.roles.first().id + ">").then(a=>{
+                message.guild.channels.get(config.RankRev).send(utils.embeds.build(`${message.author.tag}'s Rank Request`, "<@&" + message.mentions.roles.first().id + ">")).then(a=>{
                     a.react("✅")
                     a.react("❎")
-                }))
+                })
+                message.delete()
             }
             catch (e)
             {
