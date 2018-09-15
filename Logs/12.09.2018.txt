@@ -40,3 +40,8 @@
 [LOG](12/09/2018 18:02:43) Fubbo ran command '.settings'
 [LOG](12/09/2018 18:02:50) Fubbo ran command '.settings mute 485975766685843457'
 [LOG](12/09/2018 18:03:02) Fubbo ran command '.settings'
+[LOG](12/09/2018 21:50:51) Fubbo ran command '.settings'
+[LOG](12/09/2018 21:51:14) Fubbo ran command '.roleid <@&489481124670734338>'
+[LOG](12/09/2018 21:51:21) Fubbo ran command '.settings'
+[LOG](12/09/2018 21:51:28) Fubbo ran command '.settings mute 489481124670734338'
+[LOG](12/09/2018 21:51:42) Fubbo ran command '.settings logs 486016170235789312'
