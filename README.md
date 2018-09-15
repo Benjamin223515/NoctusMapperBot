@@ -19,8 +19,8 @@ The following are required in order to run the Initialize file and the bot itsel
 - [x] Initialization file
 - [x] Utilities
 - [x] Settings
-- [x] Rank Requests
-- [ ] Suggestion Requests
+- [ ] Rank Requests
+- [x] Suggestion Requests
 - [x] Muting
 - [x] Nonconformity and/or muted channels
 - [ ] Ticket System
