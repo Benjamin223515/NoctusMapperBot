@@ -5,7 +5,7 @@ const fs = require("fs");
 const _delay = 10000;
 const utils = require("./utilities/utilsmain.js")
 
-const v = "0.1-beta"
+const v = "0.3"
 
 const events = {
 	MESSAGE_REACTION_ADD: 'messageReactionAdd',
@@ -68,8 +68,7 @@ client.on("ready", () => {
     client.user.setActivity("")
     utils.log.log("Started!")
     client.guilds.forEach(id => {
-        if(fs.existsSync("./Configs/" + id.id + ".json")) return;
-        else {
+        if(!fs.existsSync("./Configs/" + id.id + ".json")) {
             var conf = '{\n"prefix":".",\n"LogsChannel":"' + id.channels.first().id + '",\n"RankSub":"null",\n"SugSub":"null",\n"RankRev":"null",\n"SugRev":"null",\n"MuteRole":"null"\n}'
             utils.file.startup_file("./Configs/" + id.id + ".json", conf);
         }
@@ -78,23 +77,60 @@ client.on("ready", () => {
     client.users.forEach(a => {
         if(a.bot) users = users - 1;
     })
-    let embed = utils.embeds.build("I'm awake!", `I have started! Here's my logistics\n\`\`\`diff\nVERSION\n- ${v}\nDISCORD API\n- Discord.js ${Discord.version}\nGUILDS AND USERS\n- In ${client.guilds.size} guild${client.guilds.size > 1 ? "s" : ""}\n- Watching ${users} users\nDEVELOPER\n+ Fubbo (AXIUS)\n\`\`\``)
+    let embed = utils.embeds.build("I'm awake!", `I have started! Here's my logistics\n\`\`\`diff\nVERSION\n- ${v}\nLIBRARIES\n- Discord.js ${Discord.version}\nGUILDS AND USERS\n- In ${client.guilds.size} guild${client.guilds.size > 1 ? "s" : ""}\n- Watching ${users} users\nDEVELOPER\n+ Fubbo (AXIUS)\n\`\`\``)
     client.guilds.forEach(a => {
         let co = require('./Configs/' + a.id + ".json")
         a.channels.get(co.LogsChannel).send({embed});
     })
 });
-
 client.on("message", (message) => {
     let conf = require("./Configs/" + message.guild.id + ".json")
     if (!message.guild) return;
-    //if(message.channel.id == "482228566352855081" && message.content.indexOf(config.prefix + "%")) {
     if (message.author.bot) return;
-    if (message.content.indexOf(conf.prefix) !== 0) return;
 
-    const args = message.content.slice(conf.prefix.length).trim().split(/ +/g);
-    const command = args[0].toLowerCase();
-    Command(message, args, command)
+    //suggestions
+    if(message.channel.id == config.SugSub) {
+        try {
+            message.delete()
+            message.guild.channels.get(config.SugRev).send(utils.embeds.build(`${message.author.tag}'s Suggestion`, message.content).then(a=>{
+                a.react("✅")
+                a.react("❎")
+            }))
+        }
+        catch (e)
+        {
+            message.author.send(utils.embeds.error("An error occured.\n\n```" + e.stack + "```"))
+        }
+    }
+    else
+    //ranks
+    if(message.channel.id == config.RankSub) {
+        if(message.mentions.roles.size < 1||args.length > 1) {
+            message.author.send(utils.embeds.error("You need to mention a role you wish to request!"))
+        }
+        else
+        {
+            try {
+                message.delete()
+                message.guild.channels.get(config.RankRev).send(utils.embeds.build(`${message.author.tag}'s Rank Request`, "<@&" + message.mentions.roles.first().id + ">").then(a=>{
+                    a.react("✅")
+                    a.react("❎")
+                }))
+            }
+            catch (e)
+            {
+                message.author.send(utils.embeds.error("An error occured.\n\n```" + e.stack + "```"))
+            }
+        }
+    }
+    else {
+        if (message.content.indexOf(conf.prefix) !== 0) return;
+
+        const args = message.content.slice(conf.prefix.length).trim().split(/ +/g);
+        const command = args[0].toLowerCase();
+        Command(message, args, command)
+    }
+    
 });
 
 client.login(config.token);

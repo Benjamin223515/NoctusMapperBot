@@ -1,0 +1,48 @@
+[LOG](15/09/2018 11:44:17) Started!
+[LOG](15/09/2018 11:44:25) Fubbo ran command '.settings'
+[LOG](15/09/2018 11:44:35) Fubbo ran command '.settings logs 486016170235789312'
+[LOG](15/09/2018 11:44:45) Fubbo ran command '.roleid <@&489481124670734338>'
+[LOG](15/09/2018 11:44:54) Fubbo ran command '.settings mute 489481124670734338'
+[LOG](15/09/2018 11:44:58) Fubbo ran command '.settings'
+[LOG](15/09/2018 11:45:02) Fubbo ran command '.mute'
+[LOG](15/09/2018 11:45:27) Fubbo ran command '.reload mute'
+[LOG](15/09/2018 11:45:31) Fubbo ran command '.mute'
+[LOG](15/09/2018 11:45:35) Fubbo ran command '.mute <@155427223447273473>'
+[LOG](15/09/2018 11:46:15) Fubbo ran command '.reload mute'
+[LOG](15/09/2018 11:46:16) Fubbo ran command '.mute'
+[LOG](15/09/2018 11:46:19) Fubbo ran command '.mute <@155427223447273473>'
+[LOG](15/09/2018 11:47:28) Fubbo ran command '.reload mute'
+[LOG](15/09/2018 11:47:36) Fubbo ran command '.mute <@155427223447273473>'
+[LOG](15/09/2018 11:47:42) Fubbo ran command '.mute <@155427223447273473>'
+[LOG](15/09/2018 12:25:14) Fubbo ran command '.reload settings'
+[LOG](15/09/2018 12:25:16) Fubbo ran command '.settings'
+[LOG](15/09/2018 12:25:34) Fubbo ran command '.settings ranksub 489459947180916736'
+[LOG](15/09/2018 12:25:46) Fubbo ran command '.settings rankrev 490482480990650368'
+[LOG](15/09/2018 12:25:50) Fubbo ran command '.settings'
+[LOG](15/09/2018 12:27:12) Fubbo ran command '.reload settings'
+[LOG](15/09/2018 12:27:16) Fubbo ran command '.settings'
+[LOG](15/09/2018 12:27:26) Fubbo ran command '.settings sugsub 485980795899609088'
+[LOG](15/09/2018 12:27:35) Fubbo ran command '.settings sugrev 490482536204468224'
+[LOG](15/09/2018 12:27:40) Fubbo ran command '.settings'
+[LOG](15/09/2018 12:27:57) Fubbo ran command '.reload settings'
+[LOG](15/09/2018 12:27:58) Fubbo ran command '.settings'
+[LOG](15/09/2018 12:28:35) Fubbo ran command '.settings ranksub 486047682431811584'
+[LOG](15/09/2018 12:28:39) Fubbo ran command '.settings'
+[LOG](15/09/2018 12:28:49) Fubbo ran command '.settings sugsub 485980795899609088'
+[LOG](15/09/2018 12:41:31) Fubbo ran command '.emoji ❎'
+[LOG](15/09/2018 12:48:03) Started!
+[LOG](15/09/2018 12:48:33) Fubbo ran command '.settings'
+[LOG](15/09/2018 12:50:01) Fubbo ran command '.settings logs 489156205714079744'
+[LOG](15/09/2018 12:50:01) Fubbo ran command '.settings'
+[LOG](15/09/2018 12:52:01) Started!
+[LOG](15/09/2018 12:52:21) Fubbo ran command '.settings log 486016170235789312'
+[LOG](15/09/2018 12:52:28) Fubbo ran command '.settings logs 486016170235789312'
+[LOG](15/09/2018 12:52:53) Started!
+[LOG](15/09/2018 12:53:01) Fubbo ran command '.settings'
+[LOG](15/09/2018 12:53:10) Fubbo ran command '.settings logs 486016170235789312'
+[LOG](15/09/2018 12:54:00) Fubbo ran command '.reload settings'
+[LOG](15/09/2018 12:54:05) Fubbo ran command '.settings logs 486016170235789312'
+[LOG](15/09/2018 12:54:28) Started!
+[LOG](15/09/2018 12:56:08) Started!
+[LOG](15/09/2018 12:56:22) Started!
+[LOG](15/09/2018 12:58:33) Started!
