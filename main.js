@@ -56,11 +56,17 @@ client.on("messageReactionAdd", (reaction, user) => {
     let config = require("./config.json")
     let conf = require("./Configs/" + reaction.message.guild.id + ".json")
     //suggestions
-    client.guilds.get(config.ServerID).channels.get(conf.SugRev).fetchMessages().then(a => {
-            if(reaction.emoji.name == "✅") {
-                reaction.remove(user);
-            }
-    })
+    if(reaction.emoji.name == "✅"&&reaction.message.channel.id === conf.SugRev) {
+        let message = reaction.message;
+        //message.clearReactions().then(a=>{}).catch(a=> {console.log(a)})
+        message.guild.channels.get("490498198201171970").send(new Discord.RichEmbed(message.embeds[0]));
+        message.delete()
+    }
+
+    if(reaction.emoji.name == "❎"&&reaction.message.channel.id === conf.SugRev) {
+        let message = reaction.message;
+        message.delete()
+    }
 });
 
 client.on("ready", () => {
