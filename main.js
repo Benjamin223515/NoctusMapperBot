@@ -59,28 +59,36 @@ client.on("messageReactionAdd", (reaction, user) => {
     if(reaction.emoji.name == "✅"&&reaction.message.channel.id === conf.SugRev) {
         let message = reaction.message;
         //message.clearReactions().then(a=>{}).catch(a=> {console.log(a)})
-        message.guild.channels.get("490498198201171970").send(new Discord.RichEmbed(message.embeds[0]));
-        client.users.get("name", message.embeds[0].title.replace(/(#\d+\d)+'s Suggestion/g, "")).send(embeds.build("Suggestion accepted!", "Your suggestion has been accepted and will be implemented soon!\nkeep an eye out for an announcement!").addField("Suggestion", message.embeds[0].description))
+        message.guild.channels.get(conf.SugApp).send(new Discord.RichEmbed(message.embeds[0]));
+        let user = client.users.get(message.embeds[0].fields[0].value);
+        user.send(utils.embeds.build("Suggestion accepted!", "Your suggestion has been accepted and will be implemented soon!\nkeep an eye out for an announcement!").addField("Suggestion", message.embeds[0].description))
         message.delete()
     }
 
     if(reaction.emoji.name == "❎"&&reaction.message.channel.id === conf.SugRev) {
         let message = reaction.message;
-        client.users.get("name", message.embeds[0].title.replace(/(#\d+\d)+'s Suggestion/g, "")).send(embeds.build("Suggestion Denied", "Your suggestion has been denied.\nTweak your suggestion a bit and it might be accepted next time!").addField("Suggestion", message.embeds[0].description))
+        let user = client.users.get(message.embeds[0].fields[0].value);
+        user.send(embeds.build("Suggestion Denied", "Your suggestion has been denied.\nTweak your suggestion a bit and it might be accepted next time!").addField("Suggestion", message.embeds[0].description))
         message.delete()
     }
 
     //ranks
     if(reaction.emoji.name == "✅"&&reaction.message.channel.id === conf.RankRev) {
         let message = reaction.message;
-        client.users.get("name", message.embeds[0].title.replace(/(#\d+\d)+'s Rank Request/g, "")).send(embeds.build("Rank Request accepted!", "Your rank request has been accepted!\nEnjoy your spanking new rank!").addField("Rank", message.embeds[0].description))
-        console.log(message.embeds[0].description);
+        let user = client.users.get(message.embeds[0].fields[0].value);
+        try {
+            let role = message.guild.roles.get(message.embeds[0].description.replace("<@&", "").replace(">", ""));
+            message.guild.members.get(user.id).addRole(role)
+            user.send(utils.embeds.build("Rank Request accepted!", "Your rank request has been accepted!\nEnjoy your spanking new rank!").addField("Rank", message.embeds[0].description.replace("<@&", "").replace(">", "")))
+        } catch (e) {
+
+        }
         message.delete()
     }
 
     if(reaction.emoji.name == "❎"&&reaction.message.channel.id === conf.RankRev) {
         let message = reaction.message;
-        client.users.get("name", message.embeds[0].title.replace(/(#\d+\d)+'s Rank Request/g, "")).send(embeds.build("Rank Request denied!", "Your rank request has been denied.\nI'd reccomend putting down a rank you actually have next time..").addField("Rank", message.embeds[0].description))
+        client.users.get(message.embeds[0].fields[0].value).send(utils.embeds.build("Rank Request denied!", "Your rank request has been denied.\nI'd reccomend putting down a rank you actually have next time..").addField("Rank", message.embeds[0].description.replace("<@&", "").replace(">", "")))
         message.delete()
     }
 });
@@ -90,7 +98,7 @@ client.on("ready", () => {
     utils.log.log("Started!")
     client.guilds.forEach(id => {
         if(!fs.existsSync("./Configs/" + id.id + ".json")) {
-            var conf = '{\n"prefix":".",\n"LogsChannel":"' + id.channels.first().id + '",\n"RankSub":"null",\n"SugSub":"null",\n"RankRev":"null",\n"SugRev":"null",\n"MuteRole":"null"\n}'
+            var conf = '{\n"prefix":".",\n"LogsChannel":"' + id.channels.first().id + '",\n"RankSub":"null",\n"SugSub":"null",\n"RankRev":"null",\n"SugRev":"null",\n"MuteRole":"null"\n"SugApp":"null"\n}'
             utils.file.startup_file("./Configs/" + id.id + ".json", conf);
         }
     })
@@ -119,7 +127,7 @@ client.on("message", (message) => {
     //suggestions
     if(message.channel.id === config.SugSub) {
         try {
-            message.guild.channels.get(config.SugRev).send(utils.embeds.build(`${message.author.tag}'s Suggestion`, message.content)).then(a=>{
+            message.guild.channels.get(config.SugRev).send(utils.embeds.build(`${message.author.tag}'s Suggestion`, message.content).addField("ID", message.author.id)).then(a=>{
                 a.react("✅")
                 a.react("❎")
             })
@@ -141,7 +149,7 @@ client.on("message", (message) => {
         else
         {
             try {
-                message.guild.channels.get(config.RankRev).send(utils.embeds.build(`${message.author.tag}'s Rank Request`, "<@&" + message.mentions.roles.first().id + ">")).then(a=>{
+                message.guild.channels.get(config.RankRev).send(utils.embeds.build(`${message.author.tag}'s Rank Request`, "<@&" + message.mentions.roles.first().id + ">").addField("ID", message.author.id)).then(a=>{
                     a.react("✅")
                     a.react("❎")
                 })

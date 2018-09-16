@@ -15,6 +15,7 @@ function Help(message, id) {
     .addField("Rank Review Channel", (config.RankRev == "null" ? "DISABLED" : "<#" + config.RankRev + ">"))
     .addField("Suggestion Submission Channel", (config.SugSub == "null" ? "DISABLED" : "<#" + config.SugSub + ">"))
     .addField("Suggestion Review Channel", (config.SugRev == "null" ? "DISABLED" : "<#" + config.SugRev + ">"))
+    .addField("Approved Suggestion Channel", (config.SugApp == "null" ? "DISABLED" : "<#" + config.SugApp + ">"))
     return message.channel.send({embed}).then(a => {setTimeout(() => {a.delete()}, _delay)}).catch(b => {log.error(b)})
 }
 
@@ -36,6 +37,14 @@ exports.run = (client, message, args) => {
             fs.writeFile(__dirname + "/../Configs/" + id + ".json", JSON.stringify(config), (err) => {});
             return message.channel.send(embeds.success("Successfully changed the command prefix to `" + args[2] + "`.")).then(a => {setTimeout(() => {a.delete()}, _delay)}).catch(b => {log.error(b)})
             
+            case "sugapp":
+            if(!args[2]||isNaN(args[2])) {
+                return message.channel.send(embeds.error("Invalid Syntax\n`" + config.prefix + "settings sugapp <channelID>`")).then(a => {setTimeout(() => {a.delete()}, _delay)}).catch(b => {log.error(b)})
+            }
+            config.SugApp = args[2];
+            fs.writeFile(__dirname + "/../Configs/" + id + ".json", JSON.stringify(config), (err) => {});
+            return message.channel.send(embeds.success("Successfully changed the accepted suggestion channel to to <#" + args[2] + ">.")).then(a => {setTimeout(() => {a.delete()}, _delay)}).catch(b => {log.error(b)})
+
             case "sugrev":
             if(!args[2]||isNaN(args[2])) {
                 return message.channel.send(embeds.error("Invalid Syntax\n`" + config.prefix + "settings sugrev <channelID>`")).then(a => {setTimeout(() => {a.delete()}, _delay)}).catch(b => {log.error(b)})

@@ -1,0 +1,14 @@
+[LOG](16/09/2018 15:30:17) Started!
+[LOG](16/09/2018 15:31:26) Started!
+[LOG](16/09/2018 15:31:53) Started!
+[LOG](16/09/2018 15:33:13) Started!
+[LOG](16/09/2018 15:39:04) Fubbo ran command '.roleid <@&485976424130281483>'
+[LOG](16/09/2018 15:45:39) Started!
+[LOG](16/09/2018 15:46:38) Started!
+[LOG](16/09/2018 15:47:58) Started!
+[LOG](16/09/2018 15:53:50) Started!
+[LOG](16/09/2018 15:55:20) Started!
+[LOG](16/09/2018 15:55:23) Fubbo ran command '.settings'
+[LOG](16/09/2018 15:56:04) Started!
+[LOG](16/09/2018 15:57:26) Started!
+[LOG](16/09/2018 15:58:24) Started!
