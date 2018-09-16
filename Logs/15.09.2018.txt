@@ -68,3 +68,22 @@
 [LOG](15/09/2018 13:29:38) Started!
 [LOG](15/09/2018 13:31:02) Started!
 [LOG](15/09/2018 13:32:16) Started!
+[LOG](15/09/2018 21:55:43) Started!
+[LOG](15/09/2018 21:55:46) Fubbo ran command '.settings'
+[LOG](15/09/2018 21:55:56) Fubbo ran command '.roleid <@&489481124670734338>'
+[LOG](15/09/2018 21:56:03) Fubbo ran command '.settings mute 489481124670734338'
+[LOG](15/09/2018 21:56:11) Fubbo ran command '.mute <@432743267721936897>'
+[LOG](15/09/2018 21:56:39) Fubbo ran command '.mute <@432743267721936897>'
+[LOG](15/09/2018 22:12:10) Fubbo ran command '.mute <@432743267721936897>'
+[LOG](15/09/2018 22:13:46) Fubbo ran command '.settings'
+[LOG](15/09/2018 22:14:15) Fubbo ran command '.settings ranksub 486047682431811584'
+[LOG](15/09/2018 22:14:35) Fubbo ran command '.settings rankrev 490482480990650368'
+[LOG](15/09/2018 22:15:51) Fubbo ran command '.settings'
+[LOG](15/09/2018 22:18:33) Started!
+[LOG](15/09/2018 22:20:37) Started!
+[LOG](15/09/2018 22:27:06) Started!
+[LOG](15/09/2018 22:44:14) Started!
+[LOG](15/09/2018 22:45:23) Started!
+[LOG](15/09/2018 22:45:50) Started!
+[LOG](15/09/2018 22:49:51) Started!
+[LOG](15/09/2018 22:50:33) Started!

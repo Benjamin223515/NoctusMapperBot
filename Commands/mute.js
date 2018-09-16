@@ -7,23 +7,28 @@ const _delay = 10000;
 
 exports.run = (client, message, args) => {
     const config = require(__dirname + "/../Configs/" + message.guild.id + ".json");
-    if(!args[1]||message.mentions.members.size < 1) {
-        return message.channel.send(embeds.error("Invalid Syntax\n`" + config.prefix + "mute <@user>`")).then(a => {setTimeout(() => {a.delete()}, _delay)}).catch(b => {log.error(b)})
+    if(message.member.hasPermission("ADMINISTRATOR")) {
+        if(!args[1]||message.mentions.members.size < 1) {
+            return message.channel.send(embeds.error("Invalid Syntax\n`" + config.prefix + "mute <@user>`")).then(a => {setTimeout(() => {a.delete()}, _delay)}).catch(b => {log.error(b)})
+        }
+        else
+        {
+            message.mentions.members.forEach(a => {
+                if(a.roles.has(config.MuteRole)) {
+                    let role = message.guild.roles.find("id", config.MuteRole);
+                    a.removeRole(role).catch(console.error);
+                    return message.channel.send(embeds.error(`<@${a.id}> Unmuted.`)).then(a => {setTimeout(() => {a.delete()}, _delay)}).catch(b => {log.error(b)})
+                }
+                else
+                {
+                    let role = message.guild.roles.find("id", config.MuteRole);
+                    a.addRole(role).catch(console.error);
+                    return message.channel.send(embeds.error(`<@${a.id}> Muted.`)).then(a => {setTimeout(() => {a.delete()}, _delay)}).catch(b => {log.error(b)})
+                }
+            })
+        }
     }
-    else
-    {
-        message.mentions.members.forEach(a => {
-            if(a.roles.has(config.MuteRole)) {
-                let role = message.guild.roles.find("id", config.MuteRole);
-                a.removeRole(role).catch(console.error);
-                return message.channel.send(embeds.error(`<@${a.id}> Unmuted.`)).then(a => {setTimeout(() => {a.delete()}, _delay)}).catch(b => {log.error(b)})
-            }
-            else
-            {
-                let role = message.guild.roles.find("id", config.MuteRole);
-                a.addRole(role).catch(console.error);
-                return message.channel.send(embeds.error(`<@${a.id}> Muted.`)).then(a => {setTimeout(() => {a.delete()}, _delay)}).catch(b => {log.error(b)})
-            }
-        })
+    else {
+        return message.channel.send(embeds.error("You don't have permission to mute others")).then(a => {setTimeout(() => {a.delete()}, _delay)}).catch(b => {log.error(b)})
     }
 }

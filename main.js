@@ -60,11 +60,27 @@ client.on("messageReactionAdd", (reaction, user) => {
         let message = reaction.message;
         //message.clearReactions().then(a=>{}).catch(a=> {console.log(a)})
         message.guild.channels.get("490498198201171970").send(new Discord.RichEmbed(message.embeds[0]));
+        client.users.get("name", message.embeds[0].title.replace(/(#\d+\d)+'s Suggestion/g, "")).send(embeds.build("Suggestion accepted!", "Your suggestion has been accepted and will be implemented soon!\nkeep an eye out for an announcement!").addField("Suggestion", message.embeds[0].description))
         message.delete()
     }
 
     if(reaction.emoji.name == "❎"&&reaction.message.channel.id === conf.SugRev) {
         let message = reaction.message;
+        client.users.get("name", message.embeds[0].title.replace(/(#\d+\d)+'s Suggestion/g, "")).send(embeds.build("Suggestion Denied", "Your suggestion has been denied.\nTweak your suggestion a bit and it might be accepted next time!").addField("Suggestion", message.embeds[0].description))
+        message.delete()
+    }
+
+    //ranks
+    if(reaction.emoji.name == "✅"&&reaction.message.channel.id === conf.RankRev) {
+        let message = reaction.message;
+        client.users.get("name", message.embeds[0].title.replace(/(#\d+\d)+'s Rank Request/g, "")).send(embeds.build("Rank Request accepted!", "Your rank request has been accepted!\nEnjoy your spanking new rank!").addField("Rank", message.embeds[0].description))
+        console.log(message.embeds[0].description);
+        message.delete()
+    }
+
+    if(reaction.emoji.name == "❎"&&reaction.message.channel.id === conf.RankRev) {
+        let message = reaction.message;
+        client.users.get("name", message.embeds[0].title.replace(/(#\d+\d)+'s Rank Request/g, "")).send(embeds.build("Rank Request denied!", "Your rank request has been denied.\nI'd reccomend putting down a rank you actually have next time..").addField("Rank", message.embeds[0].description))
         message.delete()
     }
 });
@@ -90,11 +106,15 @@ client.on("ready", () => {
 });
 
 client.on("message", (message) => {
-    let id = message.guild.id;
-    let config = require("./Configs/" + id + ".json")
-    let conf = config;
+
     if (!message.guild) return;
     if (message.author.bot) return;
+
+    let id = message.guild.id
+    let config = require("./Configs/" + id + ".json")
+    let conf = config;
+
+    const args = message.content.slice(conf.prefix.length).trim().split(/ +/g);
 
     //suggestions
     if(message.channel.id === config.SugSub) {
@@ -114,8 +134,9 @@ client.on("message", (message) => {
     else
     //ranks
     if(message.channel.id === config.RankSub) {
-        if(message.mentions.roles.size < 1||args.length > 1) {
+        if(message.mentions.roles.size < 1||args > 1) {
             message.author.send(utils.embeds.error("You need to mention a role you wish to request!"))
+            message.delete()
         }
         else
         {
@@ -134,8 +155,6 @@ client.on("message", (message) => {
     }
     else {
         if (message.content.indexOf(conf.prefix) !== 0) return;
-
-        const args = message.content.slice(conf.prefix.length).trim().split(/ +/g);
         const command = args[0].toLowerCase();
         Command(message, args, command)
     }
